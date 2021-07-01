@@ -10,8 +10,7 @@ object GradleLogger {
     private var out: StyledTextOutput? = null
 
     fun initialize(gradle: Gradle) {
-        out = gradle.serviceOf<StyledTextOutputFactory>()
-            .create("abinary-output")
+        out = gradle.serviceOf<StyledTextOutputFactory>().create("hbox-gradle-plugin-output")
     }
 
     fun normal(message: String) {
