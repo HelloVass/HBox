@@ -1,6 +1,7 @@
 plugins {
     `maven-publish`
     `kotlin-dsl`
+    `java-gradle-plugin`
 }
 
 group = "info.hellovass.hbox"
@@ -63,6 +64,15 @@ publishing {
 
             from(components["java"])
             artifact(sourcesJar.get())
+        }
+    }
+}
+
+gradlePlugin {
+    plugins {
+        create("hbox-gradle-plugin") {
+            id = "hbox-gradle-plugin"
+            implementationClass = "info.hellovass.hbox.HBoxGradlePlugin"
         }
     }
 }
