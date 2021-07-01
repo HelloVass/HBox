@@ -7,5 +7,8 @@ class HBoxGradlePlugin : Plugin<Project> {
 
     override fun apply(target: Project) {
 
+        GradleLogger.initialize(target.gradle)
+
+        GradleLogger.success("apply hbox-gradle-plugin")
     }
 }
