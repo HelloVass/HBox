@@ -1,7 +1,10 @@
 plugins {
-    `kotlin-dsl`
     `maven-publish`
+    `kotlin-dsl`
 }
+
+group = "info.hellovass.hbox"
+version = "1.0.0"
 
 repositories {
     mavenCentral()
@@ -11,15 +14,16 @@ repositories {
     }
 }
 
-dependencies {
-    implementation(kotlin("stdlib"))
-}
-
 val sourcesJar by tasks.registering(Jar::class) {
     classifier = "sources"
     from(sourceSets.main.get().allSource)
 }
 
+dependencies {
+    implementation(kotlin("stdlib", version = "1.3.72"))
+}
+
+// https://docs.gradle.org/current/userguide/publishing_maven.html#publishing_maven:usage
 publishing {
     repositories {
         maven {
@@ -57,13 +61,13 @@ publishing {
                 }
             }
 
-            groupId = "info.hellovass.hbox"
-            artifactId = "HBox"
-            version = "1.0.0"
-
             from(components["java"])
-
             artifact(sourcesJar.get())
         }
     }
+}
+
+// https://docs.gradle.org/6.7.1/userguide/kotlin_dsl.html#sec:kotlin-dsl_plugin
+kotlinDslPluginOptions {
+    experimentalWarning.set(false)
 }
