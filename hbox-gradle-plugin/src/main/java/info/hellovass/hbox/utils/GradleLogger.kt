@@ -1,4 +1,4 @@
-package info.hellovass.hbox
+package info.hellovass.hbox.utils
 
 import org.gradle.api.invocation.Gradle
 import org.gradle.internal.logging.text.StyledTextOutput
