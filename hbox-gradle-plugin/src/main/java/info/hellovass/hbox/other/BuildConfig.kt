@@ -1,11 +1,5 @@
-package info.hellovass.hbox
+package info.hellovass.hbox.other
 
-/**
- * @author Flywith24
- * @date   2020/5/27
- * time   10:59
- * description
- */
 object BuildConfig {
     const val applicationId = "flywith24.android.detail"
     const val compileSdkVersion = 30

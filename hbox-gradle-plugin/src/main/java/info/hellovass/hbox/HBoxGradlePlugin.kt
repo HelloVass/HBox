@@ -1,37 +1,29 @@
 package info.hellovass.hbox
 
-import com.android.build.gradle.AppPlugin
-import com.android.build.gradle.LibraryPlugin
-import info.hellovass.hbox.utils.GradleLogger
-import org.gradle.api.Plugin
-import org.gradle.api.Project
-import org.gradle.api.plugins.PluginContainer
-import org.jetbrains.kotlin.gradle.plugin.KotlinAndroidPluginWrapper
+import info.hellovass.hbox.core.BaseTransformPlugin
+import java.io.File
 
-class HBoxGradlePlugin : Plugin<Project> {
+class HBoxGradlePlugin : BaseTransformPlugin<HBoxExtensions>() {
 
-    override fun apply(project: Project) {
+    override val pluginName: String
+        get() = Config.PLUGIN_NAME
 
-        GradleLogger.initialize(project.gradle)
+    override val extensionsName: String
+        get() = Config.EXTENSIONS_NAME
 
-        GradleLogger.success("apply hbox-gradle-plugin")
+    override fun onScanBegin() {
 
-        config(project.plugins, project)
     }
 
-    private fun config(plugins: PluginContainer, project: Project) {
-        plugins.whenPluginAdded {
-            when (this) {
-                is AppPlugin -> {
-                    GradleLogger.success("com.android.application plugin is add")
-                }
-                is LibraryPlugin -> {
-                    GradleLogger.success("com.android.library plugin is add")
-                }
-                is KotlinAndroidPluginWrapper -> {
+    override fun onScanClassFile(file: File, className: String, originScannedDirOrJar: File) {
 
-                }
-            }
-        }
+    }
+
+    override fun onScanEnd() {
+
+    }
+
+    override fun canSkipScan(jar: File): Boolean {
+        return true
     }
 }

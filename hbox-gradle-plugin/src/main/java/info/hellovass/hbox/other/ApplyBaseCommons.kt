@@ -1,4 +1,4 @@
-package info.hellovass.hbox
+package info.hellovass.hbox.other
 
 import com.android.build.gradle.BaseExtension
 import org.gradle.api.JavaVersion

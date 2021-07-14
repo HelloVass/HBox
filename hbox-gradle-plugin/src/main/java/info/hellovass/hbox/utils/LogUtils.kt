@@ -5,7 +5,7 @@ import org.gradle.internal.logging.text.StyledTextOutput
 import org.gradle.internal.logging.text.StyledTextOutputFactory
 import org.gradle.kotlin.dsl.support.serviceOf
 
-object GradleLogger {
+object LogUtils {
 
     private var out: StyledTextOutput? = null
 

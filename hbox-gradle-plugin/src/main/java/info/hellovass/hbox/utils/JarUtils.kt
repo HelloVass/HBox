@@ -9,6 +9,11 @@ import java.util.jar.JarOutputStream
 import java.util.zip.ZipEntry
 import java.util.zip.ZipFile
 
+fun execute(file: File) {
+    val classEntities = unzip(file).map { it.get() }
+    reWriteJar(file, classEntities)
+}
+
 /**
  * 解压 Jar
  *
